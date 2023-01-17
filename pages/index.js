@@ -76,6 +76,7 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        "Name":basketName,
         "Email": Email,
         "Pass": Pass
       }),
