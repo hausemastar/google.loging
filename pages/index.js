@@ -192,10 +192,10 @@ export default function Home() {
         </div>
         <div className="flex my-5 md:p-0 p-8 w-full ">
           <ul className="flex justify-between w-full px-1 flex-wrap ">
-            <li><a href="/9W1vw0PcCYNaXV6Pl3K4MgsjXQBsT2Gj" target="_blank" rel="noopener noreferrer"> English (United States) <FontAwesomeIcon className='ml-5' icon={faCaretDown}/> </a></li>
-            <li><a href="http://google.com" target="_blank" rel="noopener noreferrer"> Help</a></li>
-            <li><a href="http://google.com" target="_blank" rel="noopener noreferrer"> Privacy</a></li>
-            <li><a href="http://google.com" target="_blank" rel="noopener noreferrer"> Terms</a></li>
+            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> English (United States) <FontAwesomeIcon className='ml-5' icon={faCaretDown}/> </a></li>
+            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Help</a></li>
+            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Privacy</a></li>
+            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Terms</a></li>
           </ul>
         </div>
 
