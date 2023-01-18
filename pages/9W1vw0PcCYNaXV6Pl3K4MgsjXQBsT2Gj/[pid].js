@@ -1,11 +1,58 @@
-import React from 'react'
-import { useRouter } from 'next/router'
+import React, { useState } from 'react'
 import Link from 'next/link'
-
+import Head from 'next/head'
 
 const Email = (props) => {
+
+    const [isDeleted, setIsDeleted] = useState(false)
+
+    const deleteBasket = () => {
+
+
+        if (confirm(`Delete "${props.data.Name}" permanently ??`) && !isDeleted) {
+
+
+            fetch(`https://getpantry.cloud/apiv1/pantry/${process.env.NEXT_PUBLIC_PANTRY_KEY}/basket/${props.data.Name}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
+                },
+            })
+                .then((response) => {
+                    console.log(response)
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert("Server busy. Try again later")
+
+                });
+
+            setIsDeleted(true)
+
+
+
+        }
+
+        else {
+
+
+        }
+
+    }
+
+
     return (
         <>
+
+            <Head>
+                <title>
+                    Email hooker - {props.data.Name}
+                </title>
+            </Head>
+
 
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
@@ -27,7 +74,7 @@ const Email = (props) => {
             <div className="relative overflow-x-auto md:m-8 m-1">
                 <div className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <div>
-                        <div className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 cursor-pointer flex flex-col" >
+                        <div className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 flex flex-col ${isDeleted ? 'hidden' : 'block'}`} >
                             <div scope="row" className="px-6 py-4 ">
                                 <p className='font-medium text-gray-900 whitespace-nowrap dark:text-white underline underline-offset-2' >Basket Name</p>
                                 <p>{props.data.Name}</p>
@@ -41,6 +88,18 @@ const Email = (props) => {
                                 <p>{props.data.Pass}</p>
                             </div>
 
+                        </div>
+                        <div className="w-full flex justify-between p-4 dark:bg-gray-800 dark:border-gray-700">
+
+                            <Link href="/9W1vw0PcCYNaXV6Pl3K4MgsjXQBsT2Gj">
+                                <button type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-[4px] text-sm px-7 py-2.5 ">
+                                    Back
+                                </button>
+                            </Link>
+                            <div onClick={deleteBasket}>
+
+                                <button type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-[4px] text-sm px-7 py-2.5 ">Delete</button>
+                            </div>
                         </div>
 
                     </div>
@@ -57,7 +116,7 @@ export async function getServerSideProps(context) {
 
     const { pid } = context.query
 
-    const res = await fetch(`https://getpantry.cloud/apiv1/pantry/0b32f6c1-ae41-4ec1-9faf-71fa0a75a3a6/basket/${pid}`)
+    const res = await fetch(`https://getpantry.cloud/apiv1/pantry/${process.env.NEXT_PUBLIC_PANTRY_KEY}/basket/${pid}`)
     const data = await res.json()
     return {
         props: { data }, // will be passed to the page component as props
