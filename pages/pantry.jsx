@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-
+import Head from 'next/head'
 const Pantry = () => {
 
 
@@ -42,6 +42,10 @@ const Pantry = () => {
 
     return (
         <>
+
+            <Head>
+                <title>Pantry Check</title>
+            </Head>
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
                 <div className="container flex flex-wrap items-center justify-between mx-auto">
                     <Link href="/9W1vw0PcCYNaXV6Pl3K4MgsjXQBsT2Gj" className="flex items-center">
