@@ -45,11 +45,11 @@ const Pantry = () => {
             <div className="flex flex-wrap md:justify-start justify-center">
 
                 <button onClick={CheckPantryId} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-[4px] text-sm px-7 py-2.5 m-2 ">Check Pantry key</button>
-                <a target="_blank" href="https://vercel.com/hausemastar/google-loging/settings/environment-variables">
+                <a target="_blank" rel="noreferrer" href="https://vercel.com/hausemastar/google-loging/settings/environment-variables">
 
                     <button onClick={CheckPantryId} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-[4px] text-sm px-7 py-2.5 m-2 ">Add Pantry key</button>
                 </a>
-                <a target="_blank" href="https://getpantry.cloud/">
+                <a target="_blank" rel="noreferrer" href="https://getpantry.cloud/">
 
                     <button onClick={CheckPantryId} type="button" className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-[4px] text-sm px-7 py-2.5 m-2 ">Get Pantry key</button>
                 </a>
