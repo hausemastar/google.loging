@@ -140,8 +140,8 @@ const Index = (props) => {
                                         <td className="md:px-6  px-2 py-4">
                                             ****
                                         </td>
-                                        <td className=" py-4  text-center cursor-pointer hover:text-red-500 duration-300 "  onClick={() => deleteBasket(e.name)}>
-                                            <FontAwesomeIcon className='hover:text-red-500 duration-300' icon={faTrash}  />
+                                        <td className=" py-4  text-center cursor-pointer hover:text-red-500 duration-300 " onClick={() => deleteBasket(e.name)}>
+                                            <FontAwesomeIcon className='hover:text-red-500 duration-300' icon={faTrash} />
                                             {/* <p className='hover:text-red-500 duration-300' >Delete</p> */}
                                         </td>
 
@@ -183,7 +183,13 @@ export async function getServerSideProps() {
             'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS'
         },
     })
-    console.log(process.env.NEXT_PUBLIC_PANTRY_KEY)
+
+        // }
+
+        // Error handling here!
+
+
+
 
     const data = await res.json()
     return {
