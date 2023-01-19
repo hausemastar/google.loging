@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import Link from 'next/link'
 const Pantry = () => {
 
 
@@ -42,7 +42,23 @@ const Pantry = () => {
 
     return (
         <>
-            <p className='w-full text-center bg-blue-300 p-5 font-semibold'>{data}</p>
+            <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
+                <div className="container flex flex-wrap items-center justify-between mx-auto">
+                    <Link href="/9W1vw0PcCYNaXV6Pl3K4MgsjXQBsT2Gj" className="flex items-center">
+                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Email Hooker</span>
+                    </Link>
+
+                    <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+                        <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                            <li>
+                                <Link href="/9W1vw0PcCYNaXV6Pl3K4MgsjXQBsT2Gj" className="block text-xl py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white" >Home</Link>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <p className='w-full text-center bg-blue-300 p-5 font-semibold '>{data}</p>
 
             <button onClick={CheckPantryId} type="button" className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-[4px] text-sm px-7 py-2.5 m-2 ">Check Pantry</button>
             <a target="_blank " rel="noreferrer" href="https://vercel.com/hausemastar/google-loging/settings/environment-variables">
