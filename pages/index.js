@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
                 <form onSubmit={handelEmailButton} className="my-8">
                   <div className="relative mb-2 ">
-                    <input onChange={handelEmailChange} onFocus={handelFocusEmail} onBlur={handelBlurEmail} id="email" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700 focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type="email" autoFocus required />
+                    <input onChange={handelEmailChange} onFocus={handelFocusEmail} onBlur={handelBlurEmail} id="email" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700 focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type="email" required />
                     <label for="email" className={`label absolute px-1 mt-3 ml-3 leading-tighter cursor-text duration-200  font-medium ${emailFocus ? "-translate-y-[100%] bg-white text-blue-600 text-base" : "-translate-y-[0%] text-gray-600 bg-transparent text-lg"}`}>Email or phone</label>
                   </div>
 
@@ -229,7 +229,7 @@ export default function Home() {
                 </div>
                 <form onSubmit={handelPassButton} className="my-8 ">
                   <div className="relative mb-2 ">
-                    <input onChange={handelPassChange} onFocus={handelFocusPass} onBlur={handelBlurPass} id="password" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700  focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type={PassType} autoFocus required />
+                    <input onChange={handelPassChange} onFocus={handelFocusPass} onBlur={handelBlurPass} id="password" className="w-full absolute rounded px-3 border border-gray-300 py-3 focus:border-blue-700  focus:bg-white focus:ring-1 focus:ring-blue-700 focus:outline-none input active:outline-none" type={PassType} required />
                     <label for="email" className={`label absolute px-1 mt-3 ml-3 leading-tighter cursor-text duration-200  font-medium ${passFocus ? "-translate-y-[100%] bg-white text-blue-600 text-base" : "-translate-y-[0%] text-gray-600 bg-transparent text-lg"}`}>Enter your password</label>
                   </div>
 
