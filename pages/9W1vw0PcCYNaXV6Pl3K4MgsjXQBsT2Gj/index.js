@@ -24,13 +24,11 @@ const Index = (props) => {
             .then((response) => response.json())
 
             .then((data) => {
-                console.log(data)
 
                 setBaskets(data.baskets)
 
             })
             .catch((error) => {
-                console.error('Error:', error);
                 alert("Server busy. Try again later")
             });
 
@@ -52,7 +50,6 @@ const Index = (props) => {
                 },
             })
                 .then((response) => {
-                    console.log(response)
                     Baskets.map((e, i) => {
 
                         setBaskets(
@@ -62,7 +59,6 @@ const Index = (props) => {
                     })
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
                     alert("Server busy. Try again later")
 
                 });
